@@ -12,6 +12,8 @@ import BookDetails from "./components/BookDetails";
 import { BOOKSDATA } from "./booksData";
 import Contact from "./components/Contact";
 
+import Peliculas from "./components/Peliculas";
+
 const App = () => {
   const [rentedBooks, setRentedBooks] = useState([]);
 
@@ -21,7 +23,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
-          path="/books"
+          path="/peliculas"
           element={
             <Books rentedBooks={rentedBooks} setRentedBooks={setRentedBooks} books={BOOKSDATA} />
           }
@@ -35,6 +37,12 @@ const App = () => {
               rentedBooks={rentedBooks}
               setRentedBooks={setRentedBooks}
             />
+          }
+        />
+        <Route
+          path="/categorias"
+          element={
+            <Books rentedBooks={rentedBooks} setRentedBooks={setRentedBooks} books={BOOKSDATA} />
           }
         />
         <Route path="/contact" element={<Contact />} />
