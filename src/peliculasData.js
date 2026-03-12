@@ -1,27 +1,37 @@
 const API_KEY = import.meta.env.VITE_API_KEY;
 
-async function obtenerPelicula() {
+function obtenerPelicula() {
   let dataResponse = [];
-  for(let i=1; i<4; i++){ //Cambiar el limite para tener mas peliculas
+  let promises = [];
+
+  for (let i = 1; i < 4; i++) { // Cambiar el limite para tener mas peliculas
     const URL = `https://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=movie&page=${i}`;
-    try {
 
-        const response = await fetch(URL);
-
+    const request = fetch(URL)
+      .then(response => {
         if (!response.ok) {
-            throw new Error("Error en la petición");
+          throw new Error("Error en la petición");
         }
-
-        const data = await response.json();
-        dataResponse.push(...data.Search)
-        
-
-    } catch (error) {
+        return response.json();
+      })
+      .then(data => {
+        dataResponse.push(...data.Search);
+      })
+      .catch(error => {
         console.error("Error:", error);
-    }
-  }
-  return dataResponse
+      });
 
+    promises.push(request);
+  }
+
+  return Promise.all(promises).then(() => dataResponse);
 }
 
-export const PELICULASDATA = await obtenerPelicula();
+let PELICULASDATA = [];
+
+obtenerPelicula().then(data => {
+  PELICULASDATA = data;
+  console.log(PELICULASDATA)
+});
+
+export { PELICULASDATA };
