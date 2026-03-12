@@ -14,7 +14,7 @@ import Search from "./components/SearchPeliculas";
 import Categorias from "./components/Categorias";
 
 const App = () => {
-
+  console.log("API KEY:", import.meta.env.VITE_API_KEY);
   return (
     <div className="app">
       <Navbar />
