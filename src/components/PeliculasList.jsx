@@ -8,6 +8,8 @@ export default function PeliculasList({ movies, title }) {
 
   useEffect(() => {
 
+    if (!movies || movies.length === 0) return;
+
     const sorted = [...movies].sort((a, b) =>
       a.Title.localeCompare(b.Title)
     );

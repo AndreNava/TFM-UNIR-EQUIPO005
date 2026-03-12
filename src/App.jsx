@@ -50,7 +50,7 @@ const App = () => {
 
         <Route
           path="/search"
-          element={<Search />}
+           element={<Search movies={movies} />}
         />
 
         <Route

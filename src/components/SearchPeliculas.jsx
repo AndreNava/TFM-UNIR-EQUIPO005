@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { PELICULASDATA } from "../peliculasData";
 import PeliculasList from "./PeliculasList";
 
-export default function Search() {
+export default function Search({ movies }) {
 
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
@@ -16,8 +15,6 @@ export default function Search() {
       alert("Por favor escribe algo para buscar");
       return;
     }
-
-    const movies = PELICULASDATA;
 
     const filtered = movies.filter((movie) =>
       movie[searchBy].toLowerCase().includes(query.toLowerCase())

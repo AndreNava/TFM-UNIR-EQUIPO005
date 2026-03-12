@@ -1,6 +1,7 @@
 import PeliculasList from "./PeliculasList.jsx";
 
 export default function Peliculas({ movies }) {
+
   return (
     <div className="books">
 
