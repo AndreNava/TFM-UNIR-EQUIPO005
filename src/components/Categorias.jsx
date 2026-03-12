@@ -1,13 +1,16 @@
-import BookList from "./BookList.jsx";
+import PeliculasList from "./PeliculasList";
 
-export default function Categorias({ books }) {
+export default function Categorias({ movies }) {
   return (
-    <div className="books">
-      <h1 className="books__title">Películas.</h1>
-      <BookList
-        books={books}
-        title="Libros disponibles"
-      />
-    </div>
-  );
+      <div className="books">
+  
+        <h1 className="books__title">Categorias</h1>
+  
+        <PeliculasList
+          movies={movies}
+          title="Descubre nuestro catálogo de películas"
+        />
+  
+      </div>
+    );
 }

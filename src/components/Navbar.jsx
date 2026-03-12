@@ -19,7 +19,7 @@ export default function Navbar() {
           <Link to="/search">Buscar</Link>
         </li>
         <li className="navbar__item">
-          <Link to="/rentals">Categorias</Link>
+          <Link to="/categorias">Categorias</Link>
         </li>
         <li className="navbar__item">
           <Link to="/contact">Actores</Link>

@@ -1,19 +1,17 @@
 import { Routes, Route } from "react-router-dom";
 
-import Books from "./components/Books";
 //simport Search from "./components/Search";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import NotFound from "./components/NotFound";
-import BookDetails from "./components/BookDetails";
-import { BOOKSDATA } from "./booksData";
 import Contact from "./components/Contact";
 
 import Peliculas from "./components/Peliculas";
 import PeliculasDetails from "./components/PeliculasDetails";
 import { PELICULASDATA } from "./peliculasData";
 import Search from "./components/SearchPeliculas";
+import Categorias from "./components/Categorias";
 
 const App = () => {
 
@@ -37,12 +35,7 @@ const App = () => {
 
         <Route
           path="/categorias"
-          element={<Books books={BOOKSDATA} />}
-        />
-
-        <Route
-          path="/book/:isbn"
-          element={<BookDetails books={BOOKSDATA} />}
+          element={<Categorias movies={PELICULASDATA} />}
         />
 
         <Route path="/search" element={<Search />} />
