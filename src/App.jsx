@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-//simport Search from "./components/Search";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
@@ -9,14 +9,24 @@ import Contact from "./components/Contact";
 
 import Peliculas from "./components/Peliculas";
 import PeliculasDetails from "./components/PeliculasDetails";
-import { PELICULASDATA } from "./peliculasData";
 import Search from "./components/SearchPeliculas";
 import Categorias from "./components/Categorias";
 
+import { obtenerPelicula } from "./peliculasData";
+
 const App = () => {
-  console.log("API KEY:", import.meta.env.VITE_API_KEY);
+
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    obtenerPelicula().then(data => {
+      setMovies(data);
+    });
+  }, []);
+
   return (
     <div className="app">
+
       <Navbar />
 
       <Routes>
@@ -25,28 +35,38 @@ const App = () => {
 
         <Route
           path="/peliculas"
-          element={<Peliculas movies={PELICULASDATA} />}
+          element={<Peliculas movies={movies} />}
         />
 
         <Route
           path="/movie/:id"
-          element={<PeliculasDetails movies={PELICULASDATA} />}
+          element={<PeliculasDetails movies={movies} />}
         />
 
         <Route
           path="/categorias"
-          element={<Categorias movies={PELICULASDATA} />}
+          element={<Categorias movies={movies} />}
         />
 
-        <Route path="/search" element={<Search />} />
+        <Route
+          path="/search"
+          element={<Search />}
+        />
 
-        <Route path="/contact" element={<Contact />} />
+        <Route
+          path="/contact"
+          element={<Contact />}
+        />
 
-        <Route path="*" element={<NotFound />} />
+        <Route
+          path="*"
+          element={<NotFound />}
+        />
 
       </Routes>
 
       <Footer />
+
     </div>
   );
 };
