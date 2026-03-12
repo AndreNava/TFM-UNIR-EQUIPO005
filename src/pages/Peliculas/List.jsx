@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import PeliculaItem from "./PeliculaItem";
+import PeliculaItem from "../../components/PeliculaItem";
 
 export default function PeliculasList({ movies, title }) {
   const [sortedMovies, setSortedMovies] = useState([]);

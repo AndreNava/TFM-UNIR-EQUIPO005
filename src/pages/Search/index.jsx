@@ -1,14 +1,12 @@
 import { useState } from "react";
-import PeliculasList from "./PeliculasList";
+import PeliculasList from "../Peliculas/List";
 
 export default function Search({ movies }) {
-
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [searchBy, setSearchBy] = useState("Title");
 
   function handleSubmit(event) {
-
     event.preventDefault();
 
     if (query.trim() === "") {
@@ -28,13 +26,10 @@ export default function Search({ movies }) {
   }
 
   return (
-
     <div className="search">
-
       <h1 className="search__title">Buscar películas por:</h1>
 
       <form onSubmit={handleSubmit}>
-
         <label>
           <input
             type="radio"
@@ -77,16 +72,11 @@ export default function Search({ movies }) {
         <button type="submit" className="search__button">
           Buscar
         </button>
-
       </form>
 
       {results.length >= 1 && (
-        <PeliculasList
-          movies={results}
-          title="Películas encontradas"
-        />
+        <PeliculasList movies={results} title="Películas encontradas" />
       )}
-
     </div>
   );
 }
