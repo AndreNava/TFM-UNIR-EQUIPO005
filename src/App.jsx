@@ -11,6 +11,7 @@ import Peliculas from "./pages/Peliculas";
 import PeliculasDetails from "./components/PeliculasDetails";
 import Search from "./pages/Search";
 import Categorias from "./pages/Categorias";
+import AsistenteIA from "./components/AsistenteIA";
 
 import { obtenerPelicula } from "./peliculasData";
 
@@ -45,6 +46,8 @@ const App = () => {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+
+      <AsistenteIA />
 
       <Footer />
     </div>
